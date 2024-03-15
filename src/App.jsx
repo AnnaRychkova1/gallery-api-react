@@ -20,17 +20,17 @@ const App = () => {
   const itemRef = useRef(null);
   const heightRef = useRef(null);
 
+  const btnRef = useRef();
+
   useEffect(() => {
     if (itemRef.current) {
       const height = itemRef.current.getBoundingClientRect().height;
       heightRef.current = height;
-      window.scrollTo({
-        top: heightRef.current,
-        behavior: 'smooth',
-      });
       console.log(heightRef.current);
     }
   });
+
+  useEffect(() => console.log(btnRef.current));
 
   useEffect(() => {
     if (searchQuery === null) return;
@@ -72,6 +72,10 @@ const App = () => {
 
   const handleLoadMore = () => {
     setPage(prevPage => prevPage + 1);
+    window.scrollTo({
+      top: heightRef.current,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -80,7 +84,7 @@ const App = () => {
       {isError && <ErrorMessage />}
       <ImageGallery ref={itemRef} pictures={pictures} />
       {isLoading && <Loader />}
-      {loadMore && <LoadMoreBtn onLoadMore={handleLoadMore} />}
+      {loadMore && <LoadMoreBtn ref={btnRef} onLoadMore={handleLoadMore} />}
       <ImageModal />
     </>
   );
