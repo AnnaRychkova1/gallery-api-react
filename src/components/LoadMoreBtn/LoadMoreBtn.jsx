@@ -8,6 +8,4 @@ const LoadMoreBtn = ({ onLoadMore }) => {
   );
 };
 
-LoadMoreBtn.displayName = 'LoadMoreBtn';
-
 export default LoadMoreBtn;

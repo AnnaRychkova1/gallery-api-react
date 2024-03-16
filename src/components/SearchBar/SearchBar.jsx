@@ -1,6 +1,6 @@
 import { notify } from '../services/toaster';
-import css from './SearchBar.module.css';
 import { Field, Form, Formik } from 'formik';
+import css from './SearchBar.module.css';
 
 const SearchBar = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {
@@ -28,14 +28,6 @@ const SearchBar = ({ onSubmit }) => {
           <button className={css.searchBtn} type="submit">
             Search
           </button>
-          {/* <Toaster
-            toastOptions={{
-              style: {
-                background: '#4e75ff',
-                color: '#fff',
-              },
-            }}
-          /> */}
         </Form>
       </Formik>
     </header>
