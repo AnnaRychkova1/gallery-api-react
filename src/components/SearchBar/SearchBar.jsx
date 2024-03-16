@@ -1,20 +1,14 @@
+import { notify } from '../services/toaster';
 import css from './SearchBar.module.css';
-import toast, { Toaster } from 'react-hot-toast';
-
-const notify = () =>
-  toast('Please, input query!', {
-    duration: 3000,
-    icon: '🥺',
-  });
-
 import { Field, Form, Formik } from 'formik';
 
 const SearchBar = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {
+    onSubmit(values.query);
     if (!values.query) {
       notify();
+      return;
     }
-    onSubmit(values.query);
 
     resetForm();
   };
@@ -34,14 +28,14 @@ const SearchBar = ({ onSubmit }) => {
           <button className={css.searchBtn} type="submit">
             Search
           </button>
-          <Toaster
+          {/* <Toaster
             toastOptions={{
               style: {
                 background: '#4e75ff',
                 color: '#fff',
               },
             }}
-          />
+          /> */}
         </Form>
       </Formik>
     </header>

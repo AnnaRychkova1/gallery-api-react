@@ -1,13 +1,12 @@
-import { forwardRef } from 'react';
 import css from './LoadMoreBtn.module.css';
 
-const LoadMoreBtn = forwardRef(({ onLoadMore }, ref) => {
+const LoadMoreBtn = ({ onLoadMore }) => {
   return (
-    <button ref={ref} className={css.loadMoreBtn} onClick={onLoadMore}>
+    <button className={css.loadMoreBtn} onClick={onLoadMore}>
       Load More
     </button>
   );
-});
+};
 
 LoadMoreBtn.displayName = 'LoadMoreBtn';
 

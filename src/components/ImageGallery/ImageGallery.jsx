@@ -3,7 +3,7 @@ import css from './ImageGallery.module.css';
 import ImageCard from '../ImageCard/ImageCard';
 import { forwardRef } from 'react';
 
-const ImageGallery = forwardRef(({ pictures }, ref) => {
+const ImageGallery = forwardRef(({ pictures, onImageClick }, ref) => {
   return (
     <ul ref={ref} className={css.gallery}>
       {pictures !== null &&
@@ -11,7 +11,11 @@ const ImageGallery = forwardRef(({ pictures }, ref) => {
         pictures.map(picture => {
           return (
             <li className={css.itemsGallery} key={picture.id}>
-              <ImageCard ref={ref} picture={picture} />
+              <ImageCard
+                ref={ref}
+                picture={picture}
+                onImageClick={onImageClick}
+              />
             </li>
           );
         })}
