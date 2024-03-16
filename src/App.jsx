@@ -72,7 +72,6 @@ const App = () => {
     if (itemRef.current) {
       const height = itemRef.current.getBoundingClientRect().height;
       heightRef.current = height;
-      console.log(heightRef.current);
       window.scrollBy({
         top: heightRef.current,
         behavior: 'smooth',

@@ -1,7 +1,13 @@
 .imgItem {
+  min-height: 300px;
+}
+
+.imgCardContainer {
   width: 300px;
   height: 300px;
-  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .imgItem:hover {
