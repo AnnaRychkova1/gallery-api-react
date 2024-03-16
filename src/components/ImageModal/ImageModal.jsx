@@ -1,5 +1,4 @@
 import { MdClose } from 'react-icons/md';
-import { FcPicture } from 'react-icons/fc';
 import Modal from 'react-modal';
 import css from './ImageModal.module.css';
 
@@ -8,9 +7,9 @@ Modal.setAppElement('#root');
 const ImageModal = ({
   closeModal,
   isModalOpen,
-  imgSrc = <FcPicture size={360} />,
+  imgSrc = 'https://pixabay.com/vectors/default-emblem-icon-icons-matt-1294448/',
   imgDescription = 'Image according to your request',
-  imgAltDescription = 'Image according to your request',
+  imgAlt = 'Image according to your request',
 }) => {
   return (
     <div>
@@ -25,7 +24,7 @@ const ImageModal = ({
           <MdClose size={36} />
         </button>
         <div className={css.imageContainer}>
-          <img className={css.image} src={imgSrc} alt={imgAltDescription} />
+          <img className={css.image} src={imgSrc} alt={imgAlt} />
           <p className={css.imageInfo}>{imgDescription}</p>
         </div>
       </Modal>

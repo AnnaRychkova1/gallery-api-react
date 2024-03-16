@@ -4,12 +4,13 @@ import css from './SearchBar.module.css';
 
 const SearchBar = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {
-    onSubmit(values.query);
-    if (!values.query) {
+    const trimmedQuery = values.query.trim();
+
+    if (!trimmedQuery) {
       notify();
       return;
     }
-
+    onSubmit(trimmedQuery);
     resetForm();
   };
 

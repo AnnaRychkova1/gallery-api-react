@@ -8,9 +8,10 @@ const ImageCard = forwardRef(({ picture, onImageClick }, ref) => {
     imgAltDescription: picture.alt_description,
   };
   return (
-    <div ref={ref} onClick={() => onImageClick(imgData)}>
+    <div ref={ref}>
       <div className={css.imgCardContainer}>
         <img
+          onClick={() => onImageClick(imgData)}
           className={css.imgItem}
           width={300}
           src={picture.urls.small}

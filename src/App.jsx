@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { noquery, errorMes } from './components/services/toaster';
-// import css from './App.module.css';
 import requestPictures from './components/services/requestPictures';
+// import css from './App.module.css';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import Loader from './components/Loader/Loader';
 import ImageGallery from './components/ImageGallery/ImageGallery';
@@ -23,11 +23,11 @@ const App = () => {
   const [selectedImage, setSelectedImage] = useState({
     imgSrc: '',
     imgDescription: '',
-    imgAltDescription: '',
+    imgAlt: '',
   });
 
   useEffect(() => {
-    if (!searchQuery) {
+    if (!searchQuery || searchQuery === null) {
       setLoadMore(false);
       setIsModalOpen(false);
       setIsError(false);
