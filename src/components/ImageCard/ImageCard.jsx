@@ -5,7 +5,7 @@ const ImageCard = forwardRef(({ picture, onImageClick }, ref) => {
   const imgData = {
     imgSrc: picture.urls.regular,
     imgDescription: picture.description,
-    imgAltDescription: picture.alt_description,
+    imgAlt: picture.alt_description,
   };
   return (
     <div ref={ref}>
