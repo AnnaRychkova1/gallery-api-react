@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { noquery, errorMes } from './components/services/toaster';
 import requestPictures from './components/services/requestPictures';
@@ -18,8 +18,6 @@ const App = () => {
   const [loadMore, setLoadMore] = useState(false);
   const [page, setPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const itemRef = useRef(null);
-  const heightRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState({
     imgSrc: '',
     imgDescription: '',
@@ -64,21 +62,6 @@ const App = () => {
     fetchPicturesByQuery();
   }, [searchQuery, page]);
 
-  useEffect(() => {
-    if (page <= 1) {
-      return;
-    }
-
-    if (itemRef.current) {
-      const height = itemRef.current.getBoundingClientRect().height;
-      heightRef.current = height;
-      window.scrollBy({
-        top: heightRef.current,
-        behavior: 'smooth',
-      });
-    }
-  }, [pictures, page]);
-
   const handleSearchQuery = query => {
     setSearchQuery(query);
     setPage(1);
@@ -107,11 +90,7 @@ const App = () => {
     <>
       <SearchBar onSubmit={handleSearchQuery} />
       {isError && <ErrorMessage />}
-      <ImageGallery
-        ref={itemRef}
-        pictures={pictures}
-        onImageClick={handleImageClick}
-      />
+      <ImageGallery pictures={pictures} onImageClick={handleImageClick} />
       {isLoading && <Loader />}
       {loadMore && <LoadMoreBtn onLoadMore={handleLoadMore} />}
       {isModalOpen && (

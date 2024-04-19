@@ -1,14 +1,13 @@
-import { forwardRef } from 'react';
 import css from './ImageCard.module.css';
 
-const ImageCard = forwardRef(({ picture, onImageClick }, ref) => {
+const ImageCard = ({ picture, onImageClick }) => {
   const imgData = {
     imgSrc: picture.urls.regular,
     imgDescription: picture.description,
     imgAlt: picture.alt_description,
   };
   return (
-    <div ref={ref}>
+    <div>
       <div className={css.imgCardContainer}>
         <img
           onClick={() => onImageClick(imgData)}
@@ -28,7 +27,7 @@ const ImageCard = forwardRef(({ picture, onImageClick }, ref) => {
       </div>
     </div>
   );
-});
+};
 
 ImageCard.displayName = 'ImageCard';
 
